@@ -1,16 +1,21 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dotnetlinux
+  labels:
+    app: dotnetlinux
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: dotnetlinux
   template:
     metadata:
       labels:
         app: dotnetlinux
     spec:
       containers:
-        - image: "hackersmooth88/dotnetlinux"
+        - image: "hackersmooth88/asp-fix"
           imagePullPolicy: Always
           name: dotnetlinux
           ports:
